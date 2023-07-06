@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { WebhookHeliusController } from './webhook-helius/webhook-helius.controller';
 import { WebhookHeliusModule } from './webhook-helius/webhook-helius.module';
 import { MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
@@ -17,4 +16,4 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [AppController, WebhookHeliusController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
