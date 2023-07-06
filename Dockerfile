@@ -1,6 +1,6 @@
 FROM node:16
 
-WORKDIR /nestjs-starter-kit
+WORKDIR /api-helius-webhooks
 COPY package.json .
 RUN npm install
 COPY . .
