@@ -1,3 +1,4 @@
+import { Cluster } from '@solana/web3.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,4 +11,20 @@ const DB_USER = process.env.DB_USER || '';
 const DB_PASS = process.env.DB_PASS || '';
 const DB_NAME = process.env.DB_NAME || '';
 
-export { APP_NAME, APP_PORT, DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER };
+const DEVNET_RPC_URL = 'https://api.devnet.solana.com';
+const CLUSTER: Cluster = 'devnet';
+
+const ELUSIV_KEY = 'THIS_IS_A_ELUSIV_KEY';
+
+export {
+  APP_NAME,
+  APP_PORT,
+  DB_HOST,
+  DB_NAME,
+  DB_PASS,
+  DB_PORT,
+  DB_USER,
+  DEVNET_RPC_URL,
+  CLUSTER,
+  ELUSIV_KEY,
+};

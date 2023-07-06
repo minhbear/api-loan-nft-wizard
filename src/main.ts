@@ -7,7 +7,6 @@ import { APP_PORT, APP_NAME } from './common/environments';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
@@ -22,7 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(APP_PORT);
   console.log(`
     Server run at: http://localhost:${APP_PORT}\n
     API document: http://localhost:${APP_PORT}/api          
