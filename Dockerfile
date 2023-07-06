@@ -2,6 +2,8 @@ FROM node:16
 
 WORKDIR /api-helius-webhooks
 COPY package.json .
-RUN npm install
+COPY yarn.lock .
+RUN yarn
+
 COPY . .
-CMD npm start
+CMD yarn start

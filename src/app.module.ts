@@ -4,9 +4,16 @@ import { AppService } from './app.service';
 import { WebhookHeliusController } from './webhook-helius/webhook-helius.controller';
 import { WebhookHeliusModule } from './webhook-helius/webhook-helius.module';
 import { MailModule } from './mail/mail.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [WebhookHeliusModule, MailModule],
+  imports: [
+    WebhookHeliusModule,
+    MailModule,
+    ConfigModule.forRoot({
+      isGlobal: true, // no need to import into other modules
+    }),
+  ],
   controllers: [AppController, WebhookHeliusController],
   providers: [AppService],
 })
