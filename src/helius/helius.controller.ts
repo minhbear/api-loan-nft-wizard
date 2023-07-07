@@ -20,17 +20,17 @@ export class HeliusController {
     };
   }
 
-  @ApiOkResponse({
-    description: 'Return is asset own by publick key',
-    type: AssetIsOwnByPublicKeyDto,
-  })
-  @Post('/asset/check-is-own-by-public-key')
-  async checkIsOwnerOwnAsset(
-    @Body() { assetId, owner }: CheckAssetIsOwnByPublickKeyDto,
-  ) {
-    return await this.heliusService.checkAssetIsOwnByPublickKey({
-      assetId,
-      owner,
-    });
-  }
+  // @ApiOkResponse({
+  //   description: 'Return is asset own by publick key',
+  //   type: AssetIsOwnByPublicKeyDto,
+  // })
+  // @Post('/asset/check-is-own-by-public-key')
+  // async checkIsOwnerOwnAsset(
+  //   @Body() { assetId, owner }: CheckAssetIsOwnByPublickKeyDto,
+  // ) {
+  //   return await this.heliusService.checkAssetIsOwnByPublickKey({
+  //     assetId,
+  //     owner,
+  //   });
+  // }
 }

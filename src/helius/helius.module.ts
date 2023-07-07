@@ -8,5 +8,6 @@ import { MailModule } from 'src/mail/mail.module';
   imports: [UserModule, MailModule],
   providers: [HeliusService],
   controllers: [HeliusController],
+  exports: [HeliusService],
 })
-export class WebhookHeliusModule {}
+export class HeliusModule {}

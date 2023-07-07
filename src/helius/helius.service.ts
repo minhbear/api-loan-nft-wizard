@@ -55,14 +55,10 @@ export class HeliusService {
   async checkAssetIsOwnByPublickKey({
     assetId,
     owner,
-  }: CheckAssetIsOwnByPublickKeyDto): Promise<AssetIsOwnByPublicKeyDto> {
+  }: CheckAssetIsOwnByPublickKeyDto): Promise<boolean> {
     const assetInfo = await this.getAssetById(assetId);
 
-    return {
-      assetId,
-      owner,
-      isOwn: assetInfo.ownership.owner === owner,
-    };
+    return assetInfo.ownership.owner === owner;
   }
 
   async getAssetById(assetId: string): Promise<AssetType> {
