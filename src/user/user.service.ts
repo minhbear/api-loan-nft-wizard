@@ -6,4 +6,8 @@ export class UserService {
   findUserByRole(role: ROLE): USER {
     return DATA_USERS.find((user) => user.role === role);
   }
+
+  findUserById(id: number): USER {
+    return DATA_USERS.find((user) => user.id === +id);
+  }
 }

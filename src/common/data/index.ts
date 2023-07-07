@@ -38,7 +38,7 @@ export type REQUEST = {
 export const DATA_USERS: USER[] = [
   {
     id: 1,
-    email: 'minhbeardev@gmail.com',
+    email: 'billcipher310@gmail.com',
     publickKey: 'UPDATE THIS TO PUBLICK KEY OF WHO IS LENDER',
     role: ROLE.LENDER,
   },

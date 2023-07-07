@@ -2,10 +2,14 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { HeliusService } from 'src/helius/helius.service';
 import { CreateRequestDto } from './dtos/createRequest.dto';
 import { DATA_REQUESTS, REQUEST, REQUEST_STATUS } from 'src/common/data';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class RequestService {
-  constructor(private readonly heliusService: HeliusService) {}
+  constructor(
+    private readonly heliusService: HeliusService,
+    private readonly mailService: MailService,
+  ) { }
 
   async createRequest({ assetId, owner }: CreateRequestDto) {
     const isOwnAsset = await this.heliusService.checkAssetIsOwnByPublickKey({
@@ -26,11 +30,12 @@ export class RequestService {
     };
 
     DATA_REQUESTS.unshift(newRequest);
+    this.mailService.notifyLenderHaveRequestBorrow();
   }
 
   finalizeRequest(id: number) {
     DATA_REQUESTS.forEach((request) => {
-      if (request.id !== id) {
+      if (request.ownerId !== 2) {
         request.status = REQUEST_STATUS.REJECT;
       } else {
         request.status = REQUEST_STATUS.COMPLETE;

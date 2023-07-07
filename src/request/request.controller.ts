@@ -6,7 +6,7 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 @ApiTags('request')
 @Controller('request')
 export class RequestController {
-  constructor(private readonly requestService: RequestService) {}
+  constructor(private readonly requestService: RequestService) { }
 
   @ApiOkResponse({
     description:
@@ -22,7 +22,7 @@ export class RequestController {
       'this api used for update status request had approve by lender, and change status of rest request to reject',
   })
   @Post('finalize-request/:id')
-  async finalizeRequest(@Param('id') id: number) {
+  async finalizeRequest(@Param('id') id: string) {
     return this.requestService.finalizeRequest(+id);
   }
 }
