@@ -16,6 +16,9 @@ const CLUSTER: Cluster = 'devnet';
 
 const ELUSIV_KEY = 'THIS_IS_A_ELUSIV_KEY';
 
+const HELIUS_API_KEY = process.env.HELIUS_API_KEY || '';
+const URL_HELIUS_DAS = `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`;
+
 export {
   APP_NAME,
   APP_PORT,
@@ -27,4 +30,5 @@ export {
   DEVNET_RPC_URL,
   CLUSTER,
   ELUSIV_KEY,
+  URL_HELIUS_DAS,
 };

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Reset Your Password</title>
+    <title>Request borrow money</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -18,18 +18,6 @@
         font-size: 16px;
         margin-bottom: 20px;
       }
-      a {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-bottom: 20px;
-      }
-      a:hover {
-        background-color: #0062cc;
-      }
       .footer {
         margin-top: 20px;
         font-size: 12px;
@@ -38,10 +26,13 @@
     </style>
   </head>
   <body>
-    <h1>Crown Funding</h1>
-    <p>You have succesfully transfer the amount to the <%= campaign %>,</p>
-    <p style="font-weight: 900"><%= amount %>,</p>
-    <p>If you did not request a password reset, please ignore this email.</p>
+    <h1>Request Borrow</h1>
+    <p>Dear <%= lenderEmail %>,</p>
+    <p>You have one request for borrow money from one user</p>
+    <p>Here is the information of that user</p>
+    <p>Email: <%= borrowerEmail %></p>
+    <p>Owner address: <%= borrowerAddress %></p>
+    <p>Please go to the website to verify the borrower is have the NFT you want to take or not</p>
     <p class="footer">Thank you, Tech Wizards Team</p>
   </body>
 </html>

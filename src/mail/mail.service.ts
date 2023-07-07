@@ -1,37 +1,54 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
+import { ROLE } from 'src/common/data';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class MailService {
-  constructor(private mailerService: MailerService) { }
+  constructor(
+    private readonly mailerService: MailerService,
+    private readonly userService: UserService,
+  ) {}
 
-  async sendMailDonateSuccess(campaign = 'campaign', amount = 0) {
+  async notifyLenderHaveRequestBorrow(): Promise<void> {
+    const lender = this.userService.findUserByRole(ROLE.LENDER);
+    const borrower = this.userService.findUserByRole(ROLE.BORROWER);
+
+    await this.sendMailUserRequestBorrowMoney({
+      lenderEmail: lender.email,
+      borrowerEmail: borrower.email,
+      borrowerAddress: borrower.publickKey,
+    });
+  }
+
+  async sendMailUserRequestBorrowMoney({
+    lenderEmail,
+    borrowerEmail,
+    borrowerAddress,
+  }: {
+    lenderEmail: string;
+    borrowerEmail: string;
+    borrowerAddress: string;
+  }): Promise<void> {
     await this.mailerService.sendMail({
-      to: 'billcipher310@gmail.com',
-      // from: '"Support Team" <support@example.com>', // override default from
-      subject: 'Welcome to Nice App! Confirm your Email',
-      template: './donate-success', // `.hbs` extension is appended automatically
+      to: lenderEmail,
+      subject: 'Request borrow money',
+      template: './request-borrow',
       context: {
-        campaign,
-        amount,
+        lenderEmail,
+        borrowerEmail,
+        borrowerAddress,
       },
     });
   }
-  async sendMailNotifyCampaignTransfer(
-    campaign = 'campaign',
-    amount = 0,
-    recipient = 'recipient',
-  ) {
+
+  async sendMailTransferMoney(email: string): Promise<void> {
     await this.mailerService.sendMail({
-      to: 'billcipher310@gmail.com',
-      // from: '"Support Team" <support@example.com>', // override default from
-      subject: 'Welcome to Nice App! Confirm your Email',
-      template: './campaign-transfer', // `.hbs` extension is appended automatically
+      to: email,
+      subject: 'Transfer money success',
+      template: './transfer-monet.ejs',
       context: {
-        // ✏️ filling curly brackets with content
-        campaign,
-        amount,
-        recipient,
+        email,
       },
     });
   }

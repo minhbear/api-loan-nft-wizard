@@ -13,9 +13,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle(APP_NAME)
-    .setDescription('sever for notification using webhook helius')
+    .setDescription('API for NFT Loan Wizard')
     .setVersion('1.0')
-    .addTag('Webhook Helius')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
