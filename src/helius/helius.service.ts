@@ -49,7 +49,7 @@ export class HeliusService {
     const sendMailToBorrower = this.mailService.sendMailTransferMoney(
       borrower.email,
     );
-    Promise.all([sendMailToBorrower, sendMailToLender]);
+    await Promise.all([sendMailToBorrower, sendMailToLender]);
   }
 
   async checkAssetIsOwnByPublickKey({
@@ -94,6 +94,7 @@ export class HeliusService {
       }
     }
 
+    console.log("Transaction send")
     return isTransactionSendByElusiv;
   }
 }

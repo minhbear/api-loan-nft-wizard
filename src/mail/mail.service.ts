@@ -8,7 +8,7 @@ export class MailService {
   constructor(
     private readonly mailerService: MailerService,
     private readonly userService: UserService,
-  ) {}
+  ) { }
 
   async notifyLenderHaveRequestBorrow(): Promise<void> {
     const lender = this.userService.findUserByRole(ROLE.LENDER);
@@ -46,7 +46,7 @@ export class MailService {
     await this.mailerService.sendMail({
       to: email,
       subject: 'Transfer money success',
-      template: './transfer-monet.ejs',
+      template: './transfer-money.ejs',
       context: {
         email,
       },
