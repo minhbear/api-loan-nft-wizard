@@ -92,6 +92,7 @@ export class HeliusService {
       }
     }
 
+    console.log("Transaction send")
     return isTransactionSendByElusiv;
   }
 }
