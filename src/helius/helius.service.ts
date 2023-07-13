@@ -89,12 +89,10 @@ export class HeliusService {
       if (message.includes(ELUSIV_KEY)) {
         isTransactionSendByElusiv = true;
 
-        console.log('check 2')
         return isTransactionSendByElusiv;
       }
     }
 
-    console.log("Transaction send")
     return isTransactionSendByElusiv;
   }
 }
